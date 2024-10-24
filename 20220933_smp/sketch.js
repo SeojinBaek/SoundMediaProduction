@@ -8,21 +8,32 @@ function preload() {
 
 function setup() {
   createCanvas(img.width, img.height); // 캔버스 크기 설정 (사진 크기에 맞춤)
-}
 
+// 삼각형의 세좌표와 색 (x1, y1, x2, y2, x3, y3, color)
+pieces.push([582, 150, 670, 121, 676, 164, 'rgba(167, 183, 196, 255)']); 
+
+
+
+}
 function draw() {
-  image(img, 0, 0);  // 배경 이미지를 그리
+  image(img, 0, 0);  // 배경 이미지를 그림
+
+  for (let piece of pieces) {
+    let x1 = piece[0];
+    let y1 = piece[1];
+    let x2 = piece[2];
+    let y2 = piece[3];
+    let x3 = piece[4];
+    let y3 = piece[5];
+    let color = piece[6];
+
+    fill(color);
+    noStroke(); //조각들의 테두리 없애기 위함
+    beginShape();
+    vertex(x1, y1);
+    vertex(x2, y2);
+    vertex(x3, y3);
+    endShape(CLOSE); // 삼각형 그리기
+  }
   
 }
-// 마우스를 클릭했을 때 실행되는 함수
-function mousePressed() {
-  // 클릭한 좌표의 색상을 추출
-  let c = img.get(mouseX, mouseY);
-
-  // 조각의 좌표와 색상을 배열에 저장
-  pieces.push({ x: mouseX, y: mouseY, color: c });
-
-  // 콘솔에 좌표와 색상을 출력
-  console.log("Mouse clicked at: " + mouseX + ", " + mouseY + ", Color: " + c);
-}
-//색깔값은 rgba로 출력 
