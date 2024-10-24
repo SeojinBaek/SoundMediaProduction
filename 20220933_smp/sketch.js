@@ -1,5 +1,5 @@
 let img;
-let tileSize = 50;  // 조각의 크기
+// let tileSize = 50;  // 조각의 크기
 let pieces = [];    // 조각의 좌표를 저장할 배열
 
 function preload() {
